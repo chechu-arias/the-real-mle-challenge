@@ -2,10 +2,7 @@
 import pandas as pd
 
 from src.data.load_data import load_data
-
-from src.features.room_type import build_room_type
-from src.features.neighbourhood import build_neighbourhood
-from src.features.price_category import build_price_category
+from src.features.utils import build_room_type, build_neighbourhood, build_price_category
 
 import config as config
 

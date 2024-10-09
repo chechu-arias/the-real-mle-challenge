@@ -15,9 +15,9 @@ from src.features.build_features import build_training, build_inference_record
 from src.DTO.category_classifier import InputCategoryClassifierEndpoint
 
 
-logger = logging.getLogger("riesgos-alimentarios-api")
+logger = logging.getLogger("price-category-api")
 
-app = FastAPI(docs_url=None)
+app = FastAPI()
 
 
 @app.get("/train_category_model")
@@ -48,9 +48,9 @@ def predict_category_endpoint(
     start = time.time()
     client_host = request.client.host
 
-    df = pd.DataFrame.from_records([data.dict()])
+    df = pd.DataFrame.from_records([data.model_dump()])
     df = build_inference_record(df)
-    prediction, model_used = predict_category(df, data.model_name)
+    prediction, model_used = predict_category(df, data.classifier_name)
 
     out_json = {
         "id": data.id,
