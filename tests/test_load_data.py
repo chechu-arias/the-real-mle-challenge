@@ -8,7 +8,7 @@ import pandas as pd
 from src.data.utils import process_bathrooms
 
 
-def test_add_status_column():
+def test_add_bathroom_column():
     data = {
         'id': [1, 2, 3],
         'bathrooms_text': ['2 baths', '', '']

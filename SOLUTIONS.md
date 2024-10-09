@@ -22,7 +22,7 @@ For this challenge, I created an api.py file with all the endpoints:
 I defined all of them in a single file as there were not that many and I do not expect the api to grow in size. However, if that was the case, I would group this endpoints in a preffix and then add other groups. The endpoints have the following workflow:
 
 - The train endpoint is used to train a new model, which will be saved locally in folder `models`. The user will receive the name of the new versioned model.
-- The inference endpoint is used to make a prediction for a single input house. For this, defined in folder `src/DTO` the endpoint input object, making sure that it checks all the necessary validators.
+- The inference endpoint is used to make a prediction for a single input house. For this, I defined in folder `src/DTO` the endpoint input object, making sure that it checks all the necessary validators.
 - The models endpoint returns a list of all available models to select the specific one you want to use in the inference endpoint.
 
 -------
