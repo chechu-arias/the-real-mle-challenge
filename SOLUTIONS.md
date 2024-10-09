@@ -21,7 +21,17 @@ I also added type annotations to all the code to make it more clear.
 
 Challenge 3 - Dockerize your solution
 
-For this challenge, I created a Dockerfile in which I install the requirements, copy all the code and launch the application from uvicorn.
+For this challenge, I created a Dockerfile in which I install the requirements, copy all the code and launch the application from uvicorn. To run this docker, run:
 
-Apart from that, I was testing the API in the web browser (/docs), but that cannot be accessible in a production environment, so I turned it off and created a test for the API using Python. I also modified the prediction endpoint to return to the user the model that was used, so he can be certain that the model that he selected was used.
+```bash
+docker build -t intelygenz .
+```
+
+and then do:
+
+```bash
+docker run -p 8080:8080 intelygenz
+```
+
+Apart from that, I was testing the API in the web browser (/docs), but that cannot be accessible in a production environment, so I turned it off and created a test for the dockerized API using Python. I also modified the prediction endpoint to return to the user the model that was used, so he can be certain that the model that he selected was used.
 

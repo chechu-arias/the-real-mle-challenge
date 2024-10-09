@@ -80,4 +80,4 @@ def list_models() -> JSONResponse:
 
 
 if __name__ == '__main__':
-    uvicorn.run(app=app)
+    uvicorn.run(app=app, port=8080)
