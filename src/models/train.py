@@ -10,9 +10,9 @@ from sklearn.model_selection import train_test_split
 import config as config
 
 
-def train(df):
+def train_model(df: pd.DataFrame) -> str:
 
-    X = df[config.FEATURE_NAMES]
+    X = df[config.MODEL_FEATURES]
     y = df['category']
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -27,7 +27,8 @@ def train(df):
     y_pred = clf.predict(X_test)
     score = accuracy_score(y_test, y_pred) * 100
 
-    pickle.dump(
-        clf,
-        open(config.DIR_MODELS / f"{dt.today()}_acc_{score:.2f}_simple_classifier.pkl", 'wb')
-    )
+    model_name = f"{dt.today()}_acc_{score:.2f}_simple_classifier.pkl"
+
+    pickle.dump(clf, open(config.DIR_MODELS / model_name, 'wb'))
+
+    return model_name

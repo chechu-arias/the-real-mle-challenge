@@ -4,7 +4,7 @@ import pandas as pd
 import config as config
 
 
-def load_raw_data():
+def load_raw_data() -> pd.DataFrame:
     df = pd.read_csv(config.FILEPATH_RAW_DATA, usecols=config.RAW_COLUMNS)
 
     df.rename(

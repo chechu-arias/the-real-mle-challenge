@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def build_price_category(df):
+def build_price_category(df: pd.DataFrame) -> pd.DataFrame:
 
     df['category'] = pd.cut(
         df['price'],

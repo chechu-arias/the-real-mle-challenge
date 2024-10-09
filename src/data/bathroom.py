@@ -1,8 +1,9 @@
 
 import numpy as np
+import pandas as pd
 
 
-def _num_bathroom_from_text(text):
+def _num_bathroom_from_text(text: str) -> float:
     try:
         if isinstance(text, str):
             bath_num = text.split(" ")[0]
@@ -13,7 +14,7 @@ def _num_bathroom_from_text(text):
         return np.nan
 
 
-def load_bathrooms(df):
+def load_bathrooms(df: pd.DataFrame) -> pd.DataFrame:
 
     df['bathrooms'] = df['bathrooms_text'].apply(_num_bathroom_from_text)
 

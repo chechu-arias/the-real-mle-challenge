@@ -19,8 +19,11 @@ ROOM_TYPE_TO_CATEGORICAL = {
 }
 NEIGHB_TO_CATEGORICAL = {"Bronx": 1, "Queens": 2, "Staten Island": 3, "Brooklyn": 4, "Manhattan": 5}
 
+ROOM_TYPE_OPTIONS = list(ROOM_TYPE_TO_CATEGORICAL.keys())
+NEIGHB_OPTIONS = list(NEIGHB_TO_CATEGORICAL.keys())
+
 MODEL_FEATURES = ['neighbourhood', 'room_type', 'accommodates', 'bathrooms', 'bedrooms']
 
-MODEL_OUTPUT_TO_CLASS = {'0.0': 'low', '1.0': 'mid', '2.0': 'high', '3.0': 'lux'}
+MODEL_OUTPUT_TO_CLASS = ['Low', 'Mid', 'High', 'Luxury']
 
-MODEL_PATH = './models/simple_classifier.pkl'
+DEFAULT_MODEL_PATH = DIR_MODELS / "simple_classifier.pkl"
