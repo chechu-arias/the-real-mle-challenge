@@ -10,8 +10,8 @@ DIR_MODELS = Path(DIR_REPO) / "models"
 FILEPATH_RAW_DATA = DIR_DATA_RAW / "listings.csv"
 
 RAW_COLUMNS = [
-    'id', 'neighbourhood_group_cleansed', 'property_type', 'room_type', 'latitude', 'longitude',
-    'accommodates', 'bathrooms_text', 'bedrooms', 'beds','amenities', 'price'
+    'id', 'neighbourhood_group_cleansed', 'room_type',
+    'accommodates', 'bathrooms_text', 'bedrooms', 'price'
 ]
 
 ROOM_TYPE_TO_CATEGORICAL = {
@@ -24,4 +24,3 @@ MODEL_FEATURES = ['neighbourhood', 'room_type', 'accommodates', 'bathrooms', 'be
 MODEL_OUTPUT_TO_CLASS = {'0.0': 'low', '1.0': 'mid', '2.0': 'high', '3.0': 'lux'}
 
 MODEL_PATH = './models/simple_classifier.pkl'
-
