@@ -17,7 +17,7 @@ from src.DTO.category_classifier import InputCategoryClassifierEndpoint
 
 logger = logging.getLogger("riesgos-alimentarios-api")
 
-app = FastAPI()
+app = FastAPI(docs_url=None)
 
 
 @app.get("/train_category_model")
@@ -50,11 +50,12 @@ def predict_category_endpoint(
 
     df = pd.DataFrame.from_records([data.dict()])
     df = build_inference_record(df)
-    prediction = predict_category(df, data.model_name)
+    prediction, model_used = predict_category(df, data.model_name)
 
     out_json = {
         "id": data.id,
-        "price_category": prediction[0]
+        "price_category": prediction[0],
+        "model": model_used
     }
 
     logger.info(

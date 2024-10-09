@@ -8,5 +8,5 @@ from src.models.predict import predict_category
 if __name__ == '__main__':
 
     df = build_training()
-    prediction = predict_category(df, model_name=None)
+    prediction, model_used = predict_category(df, model_name=None)
     print(prediction)

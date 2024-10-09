@@ -10,25 +10,27 @@ from sklearn.ensemble import RandomForestClassifier
 import config as config
 
 
-def load_model(model_name: str) -> RandomForestClassifier:
+def load_model(model_name: str) -> tuple[RandomForestClassifier, str]:
 
-    model_path = config.DEFAULT_MODEL_PATH
+    used_model_name = config.DEFAULT_MODEL_NAME
+    used_model_path = config.DEFAULT_MODEL_PATH
     if model_name is not None and os.path.exists(
         config.DIR_MODELS / model_name
     ):
-        model_path = config.DIR_MODELS / model_name
+        used_model_name = model_name
+        used_model_path = config.DIR_MODELS / model_name
 
-    with open(model_path, 'rb') as f:
+    with open(used_model_path, 'rb') as f:
         model = pickle.load(f)
 
-    logging.info(f"Las predicciones se realizan con: {model_path}")
+    logging.info(f"Las predicciones se realizan con: {used_model_path}")
 
-    return model
+    return model, used_model_name
 
 
-def predict_category(df: pd.DataFrame, model_name: Optional[str]) -> list:
+def predict_category(df: pd.DataFrame, model_name: Optional[str]) -> tuple[list, str]:
 
-    model = load_model(model_name)
+    model, used_model_name = load_model(model_name)
 
     prediction_list = model.predict(df[config.MODEL_FEATURES])
 
@@ -36,4 +38,4 @@ def predict_category(df: pd.DataFrame, model_name: Optional[str]) -> list:
         config.MODEL_OUTPUT_TO_CLASS[int(prediction)] for prediction in prediction_list
     ]
 
-    return prediction_class_list
+    return prediction_class_list, used_model_name

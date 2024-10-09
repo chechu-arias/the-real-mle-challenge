@@ -26,4 +26,5 @@ MODEL_FEATURES = ['neighbourhood', 'room_type', 'accommodates', 'bathrooms', 'be
 
 MODEL_OUTPUT_TO_CLASS = ['Low', 'Mid', 'High', 'Luxury']
 
-DEFAULT_MODEL_PATH = DIR_MODELS / "simple_classifier.pkl"
+DEFAULT_MODEL_NAME = "simple_classifier.pkl"
+DEFAULT_MODEL_PATH = DIR_MODELS / DEFAULT_MODEL_NAME
